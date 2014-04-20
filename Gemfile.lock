@@ -3,8 +3,12 @@ GEM
   specs:
     alsa-rawmidi (0.2.14)
       ffi (>= 1.0)
-    dino (0.11.2)
-      serialport
+    arduino_firmata (0.3.7)
+      args_parser (>= 0.1.4)
+      event_emitter (>= 0.2.4)
+      serialport (>= 1.1.0)
+    args_parser (0.2.0)
+    event_emitter (0.2.5)
     ffi (1.9.3)
     ffi-coremidi (0.2.0)
       ffi (>= 1.0)
@@ -33,6 +37,6 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  dino
+  arduino_firmata
   micromidi
   unimidi
