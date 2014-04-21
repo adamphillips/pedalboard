@@ -6,8 +6,8 @@ require 'micromidi'
 
 board = Dino::Board.new(Dino::TxRx::Serial.new)
 led = Dino::Components::Led.new(pin: 13, board: board)
-button1 = Dino::Components::Button.new(pin: 2, board: board)
-button2 = Dino::Components::Button.new(pin: 3, board: board)
+button1 = Dino::Components::Button.new(pin: 7, board: board)
+button2 = Dino::Components::Button.new(pin: 9, board: board)
 
 MIDI.using(@output) do
   button1.up do
