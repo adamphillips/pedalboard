@@ -4,3 +4,7 @@ gem 'dino'
 
 gem 'micromidi'
 gem 'unimidi'
+
+group :test do
+  gem 'rspec'
+end
