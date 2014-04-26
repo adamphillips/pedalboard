@@ -10,6 +10,9 @@ pedalboard = Pedalboard.create do
     pin: 13, board: board
   )
 
+  pot pin: 'A0',
+    change: ->(value) { set_volume(value) }
+
   pedal pin: 5,
     press: ->{ next_set; led.send :on }
 

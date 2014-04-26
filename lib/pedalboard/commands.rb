@@ -34,6 +34,12 @@ class Pedalboard
       end
     end
 
+    def set_volume value
+      midi do
+        cc 7, value
+      end
+    end
+
     def midi &block
       MIDI.using(pedalboard.midi_output) do
         instance_exec &block

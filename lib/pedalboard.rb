@@ -1,5 +1,6 @@
 require 'pedalboard/dsl_parser'
 require 'pedalboard/components/pedal'
+require 'pedalboard/components/pot'
 
 class Pedalboard
 

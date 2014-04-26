@@ -3,14 +3,15 @@ require 'dino/components/button'
 
 require 'pedalboard/commands'
 
+require_relative 'base_component'
+
 class Pedalboard; module Components
-  class Pedal
-    attr_reader :pin, :pedalboard,
-                  :press, :release
+  class Pedal < BaseComponent
+    attr_reader :press, :release
 
     def initialize opts={}
-      @pin = opts.fetch(:pin) {}
-      @pedalboard = opts.fetch(:pedalboard) {}
+      super opts
+
       @press = opts.fetch(:press) { ->{} }
       @release = opts.fetch(:release) { ->{} }
 
@@ -41,12 +42,6 @@ class Pedalboard; module Components
         pin: pin,
         board: pedalboard.board
       )
-    end
-
-    def run_command command
-      Commands.new(
-        pedalboard: pedalboard
-      ).instance_exec &command
     end
   end
 end; end

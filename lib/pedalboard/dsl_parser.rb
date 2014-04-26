@@ -10,6 +10,10 @@ class Pedalboard
       @pedalboard.add_component :pedal, *args
     end
 
+    def pot *args
+      @pedalboard.add_component :pot, *args
+    end
+
     def board
       self.pedalboard.board
     end
