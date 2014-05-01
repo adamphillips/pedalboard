@@ -10,6 +10,12 @@ pedalboard = Pedalboard.create do
     pin: 13, board: board
   )
 
+  pedal pin: 5,
+    press: ->{ next_set; led.send :on }
+
+  pedal pin: 6,
+    press: -> { previous_set; led.send :off }
+
   pedal pin: 7,
     press: ->{ next_patch; led.send :on }
 
