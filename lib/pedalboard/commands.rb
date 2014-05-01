@@ -6,17 +6,31 @@ class Pedalboard
       @pedalboard = opts.fetch(:pedalboard) { }
     end
 
+    def next_set
+      puts 'Next set'
+      midi do
+        note 'c'
+      end
+    end
+
+    def previous_set
+      puts 'Previous set'
+      midi do
+        note 'd'
+      end
+    end
+
     def next_patch
       puts 'Next patch'
       midi do
-        note 'c'
+        note 'e'
       end
     end
 
     def previous_patch
       puts 'Previous patch'
       midi do
-        note 'e'
+        note 'f'
       end
     end
 
