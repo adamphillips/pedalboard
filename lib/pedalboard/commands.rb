@@ -41,7 +41,7 @@ class Pedalboard
     end
 
     def midi &block
-      MIDI.using(pedalboard.midi_output) do
+      MIDI.using(pedalboard.midi_input, pedalboard.midi_output) do
         instance_exec &block
       end
     end

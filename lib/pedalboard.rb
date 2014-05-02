@@ -1,4 +1,5 @@
 require 'pedalboard/dsl_parser'
+require 'pedalboard/components/led'
 require 'pedalboard/components/pedal'
 require 'pedalboard/components/pot'
 

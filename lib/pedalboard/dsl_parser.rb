@@ -6,6 +6,10 @@ class Pedalboard
       @pedalboard = pedalboard
     end
 
+    def led *args
+      @pedalboard.add_component :led, *args
+    end
+
     def pedal *args
       @pedalboard.add_component :pedal, *args
     end
