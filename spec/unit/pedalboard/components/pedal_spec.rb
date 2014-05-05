@@ -9,13 +9,13 @@ describe Pedalboard::Components::Pedal do
     let(:pedalboard) { double(board: board) }
     let(:pin) { double }
     let(:press) { double }
-    let(:release) { double }
+    let(:long_press) { double }
 
     subject { Pedalboard::Components::Pedal.new(
         pedalboard: pedalboard,
         pin: pin,
         press: press,
-        release: release
+        long_press: long_press
       ) }
 
     before :each do
@@ -27,6 +27,6 @@ describe Pedalboard::Components::Pedal do
     its(:pedalboard) { should equal pedalboard }
     its(:pin) { should equal pin }
     its(:press) { should equal press }
-    its(:release) { should equal release }
+    its(:long_press) { should equal long_press }
   end
 end

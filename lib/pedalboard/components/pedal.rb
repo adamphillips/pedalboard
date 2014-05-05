@@ -7,13 +7,15 @@ require_relative 'base_component'
 
 class Pedalboard; module Components
   class Pedal < BaseComponent
-    attr_reader :press, :release
+    LONG_TIME = 0.4
+
+    attr_reader :press, :long_press
 
     def initialize opts={}
       super opts
 
       @press = opts.fetch(:press) { ->{} }
-      @release = opts.fetch(:release) { ->{} }
+      @long_press = opts.fetch(:long_press) { ->{} }
 
       configure_dino_component
     end
@@ -21,7 +23,7 @@ class Pedalboard; module Components
     def configure_dino_component
       dino_component.down do
         begin
-          run_command press
+          @start_time = Time.now
         rescue Exception => e
           puts e.message
         end
@@ -29,7 +31,12 @@ class Pedalboard; module Components
 
       dino_component.up do
         begin
-          run_command release
+          interval = Time.now - @start_time
+          if interval > LONG_TIME
+            run_command long_press
+          else
+            run_command press
+          end
         rescue Exception => e
           puts e.message
         end
