@@ -36,10 +36,10 @@ MIDI.using(pedalboard.midi_input, pedalboard.midi_output) do
   receive do |message|
     if message.index == 22
       begin
-        led1.light_if ->{ message.value == 1 }
-        led2.light_if ->{ message.value == 2 }
-        led3.light_if ->{ message.value == 3 }
-        led4.light_if ->{ message.value == 4 }
+        led1.light_if message.value == 1
+        led2.light_if message.value == 2
+        led3.light_if message.value == 3
+        led4.light_if message.value == 4
       rescue Exception => e
         puts e.message
       end
