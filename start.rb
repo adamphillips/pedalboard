@@ -15,16 +15,20 @@ pedalboard = Pedalboard.create do
     change: ->(value) { set_volume(value) }
 
   pedal pin: 2,
-    press: ->{ next_set }
+    press: ->{ patch 1 },
+    long_press: ->{ patch 4 }
 
   pedal pin: 3,
-    press: -> { previous_set }
+    press: ->{ patch 2 },
+    long_press: ->{ patch 5 }
 
   pedal pin: 4,
-    press: ->{ next_patch }
+    press: ->{ patch 3 },
+    long_press: ->{ patch 6 }
 
   pedal pin: 5,
-    press: -> { previous_patch }
+    press: ->{ next_set },
+    long_press: ->{ previous_set }
 
   led1 = led pin: 13
   led2 = led pin: 12
