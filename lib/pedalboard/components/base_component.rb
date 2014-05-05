@@ -1,5 +1,7 @@
 require 'dino/components/base_component'
 
+require 'pedalboard/commands'
+
 class Pedalboard; module Components
   class BaseComponent
     attr_reader :pin, :pedalboard
@@ -7,6 +9,7 @@ class Pedalboard; module Components
     def initialize opts={}
       @pin = opts.fetch(:pin) {}
       @pedalboard = opts.fetch(:pedalboard) {}
+      @dino_component = opts.fetch(:dino_component) {}
     end
 
   private
