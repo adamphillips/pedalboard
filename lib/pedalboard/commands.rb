@@ -1,36 +1,31 @@
 class Pedalboard
   class Commands
+    NOTES = [
+      'c1', 'd1', 'e1',
+      'f1', 'g1', 'a1'
+    ]
+
     attr_reader :pedalboard
 
     def initialize opts={}
       @pedalboard = opts.fetch(:pedalboard) { }
     end
 
-    def next_set
-      puts 'Next set'
+    def patch number
       midi do
-        note 'c'
+        note NOTES[number - 1]
+      end
+    end
+
+    def next_set
+      midi do
+        note 'b1'
       end
     end
 
     def previous_set
-      puts 'Previous set'
       midi do
-        note 'd'
-      end
-    end
-
-    def next_patch
-      puts 'Next patch'
-      midi do
-        note 'e'
-      end
-    end
-
-    def previous_patch
-      puts 'Previous patch'
-      midi do
-        note 'f'
+        note 'c2'
       end
     end
 
