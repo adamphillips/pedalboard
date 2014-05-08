@@ -17,7 +17,7 @@ class Pedalboard
 
   def add_component type, opts={}
     opts[:pedalboard] = self
-    component =  Object.const_get(component_class(type))
+    component =  eval(component_class(type))
       .new(opts)
     components << component
     component
