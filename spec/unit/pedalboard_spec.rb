@@ -1,7 +1,6 @@
 require 'spec_helper'
 
 require 'pedalboard'
-require 'pedalboard/components/pedal'
 
 describe Pedalboard do
   def connection
