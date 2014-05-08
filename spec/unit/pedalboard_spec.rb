@@ -16,11 +16,16 @@ describe Pedalboard do
     @midi_output ||= double
   end
 
+  def midi_input
+    @midi_input ||= double
+  end
+
   describe '#add_component' do
     subject { Pedalboard.new(
       connection: connection,
       board: board,
-      midi_output: midi_output
+      midi_output: midi_output,
+      midi_input: midi_input
     ) }
 
     before :each do
@@ -58,7 +63,8 @@ describe Pedalboard do
       expect(subject.create(
           connection: connection,
           board: board,
-          midi_output: midi_output
+          midi_output: midi_output,
+          midi_input: midi_input
         )).to be_kind_of subject
     end
 

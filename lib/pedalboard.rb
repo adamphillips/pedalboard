@@ -5,13 +5,14 @@ require 'pedalboard/components/pot'
 
 class Pedalboard
 
-  attr_reader :components, :board, :midi_output
+  attr_reader :components, :board, :midi_output, :midi_input
 
   def initialize opts={}
     @components = []
     @connection = opts.fetch(:connection) { Dino::TxRx::Serial.new }
     @board = opts.fetch(:board) { Dino::Board.new(connection) }
     @midi_output = opts.fetch(:midi_output) { UniMIDI::Output.gets }
+    @midi_input = opts.fetch(:midi_input) { UniMIDI::Input.gets }
   end
 
   def add_component type, opts={}
