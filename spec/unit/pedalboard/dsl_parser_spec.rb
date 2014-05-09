@@ -26,17 +26,38 @@ module Pedalboard
       it { should == board }
     end
 
-    describe '#pedal' do
+    describe 'components' do
+      let(:args) { double }
       subject { DSLParser.new(pedalboard) }
 
-      it 'should create a pedal component' do
-        args = double
+      describe '#led' do
+        it 'should create a led component' do
+          expect(pedalboard)
+            .to receive(:add_component)
+              .with(:led, args)
 
-        expect(pedalboard)
-          .to receive(:add_component)
-            .with(:pedal, args)
+          subject.led args
+        end
+      end
 
-        subject.pedal args
+      describe '#pedal' do
+        it 'should create a pedal component' do
+          expect(pedalboard)
+            .to receive(:add_component)
+              .with(:pedal, args)
+
+          subject.pedal args
+        end
+      end
+
+      describe '#pot' do
+        it 'should create a pot component' do
+          expect(pedalboard)
+            .to receive(:add_component)
+              .with(:pot, args)
+
+          subject.pot args
+        end
       end
     end
   end
