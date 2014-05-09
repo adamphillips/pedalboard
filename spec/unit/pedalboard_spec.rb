@@ -3,78 +3,76 @@ require 'spec_helper'
 require 'pedalboard'
 
 describe Pedalboard do
-  def connection
-    @connection ||= double
-  end
-
-  def board
-    @board ||= double
-  end
-
-  def midi_output
-    @midi_output ||= double
-  end
-
-  def midi_input
-    @midi_input ||= double
-  end
-
-  describe '#add_component' do
-    subject { Pedalboard.new(
-      connection: connection,
-      board: board,
-      midi_output: midi_output,
-      midi_input: midi_input
-    ) }
-
-    before :each do
-      @board = double
-
-      allow(subject)
-        .to receive(:initialize_board)
-          .and_return(@board)
-    end
-
-    it 'should add a component to the board' do
-      args = {option1: 'someopt'}
-      pedal = double
-
-      expect(Pedalboard::Components::Pedal)
-        .to receive(:new)
-          .with({
-              option1: 'someopt',
-              pedalboard: subject
-            })
-          .and_return(pedal)
-
-      expect(subject.add_component :pedal, args)
-        .to be(pedal)
-
-      expect(subject.components.include?(pedal))
-        .to be_true
-    end
-  end
-
   describe '.create' do
+    let(:connection) { double }
+    let(:board) { double }
+    let(:midi_input) { double }
+    let(:midi_output) { double }
+    let(:device_class) { double }
+    let(:dsl_parser) { double }
+
+    let(:device_options) {
+      {
+        connection: connection,
+        board: board,
+        midi_output: midi_output,
+        midi_input: midi_input
+      }
+    }
+
     subject { Pedalboard }
 
-    it 'should return an instance of the pedalboard' do
+    it 'should return a new device instance' do
+      device = double
+      parser = double
+
+      expect(device_class).to receive(:new)
+        .with(device_options)
+        .and_return(device)
+
+      expect(dsl_parser).to receive(:new)
+        .with(device)
+        .and_return(parser)
+
+      expect(parser).to receive(:pedalboard)
+        .and_return(device)
+
       expect(subject.create(
-          connection: connection,
-          board: board,
-          midi_output: midi_output,
-          midi_input: midi_input
-        )).to be_kind_of subject
+          device_options.merge(
+            device_class: device_class,
+            dsl_parser: dsl_parser
+          )
+        )
+      ).to equal(device)
     end
 
-    it 'should take a block containing components' do
-      board_double = double('Pedalboard')
-      expect(board_double).to receive(:add_component).with(:pedal, pin: 3)
+    context 'when passed a block' do
+      it 'should execute the block in the context of the dsl parser' do
+        device = double
+        parser = double
 
-      allow(subject).to receive(:new).and_return(board_double)
+        expect(device_class).to receive(:new)
+          .with(device_options)
+          .and_return(device)
 
-      pedalboard = subject.create do
-        pedal pin: 3
+        expect(dsl_parser).to receive(:new)
+          .with(device)
+          .and_return(parser)
+
+        expect(parser).to receive(:some_method)
+
+        expect(parser).to receive(:pedalboard)
+          .and_return(device)
+
+        expect(subject.create(
+            device_options.merge(
+              device_class: device_class,
+              dsl_parser: dsl_parser
+            )
+          ) do
+            some_method
+          end
+        ).to equal(device)
       end
     end
   end
