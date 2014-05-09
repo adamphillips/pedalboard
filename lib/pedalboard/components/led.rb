@@ -6,12 +6,12 @@ module Pedalboard; module Components
       condition ? on : off
     end
 
-    def on
-      dino_component.send :on
-    end
-
     def off
       dino_component.send :off
+    end
+
+    def on
+      dino_component.send :on
     end
 
   private
