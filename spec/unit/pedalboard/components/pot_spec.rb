@@ -2,7 +2,7 @@ require 'spec_helper'
 
 require 'pedalboard/components/pot'
 
-class Pedalboard; module Components
+module Pedalboard; module Components
   describe Pot do
     let(:tolerance) { 10 }
     let(:upper_limit) { 110 }

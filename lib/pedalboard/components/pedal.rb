@@ -5,7 +5,7 @@ require 'pedalboard/commands'
 
 require_relative 'base_component'
 
-class Pedalboard; module Components
+module Pedalboard; module Components
   class Pedal < BaseComponent
     LONG_TIME = 0.4
 

@@ -1,4 +1,4 @@
-class Pedalboard
+module Pedalboard
   class Device
 
     attr_reader :components, :board, :midi_output, :midi_input

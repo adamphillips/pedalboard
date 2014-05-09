@@ -3,7 +3,7 @@ require 'dino/components/sensor'
 
 require 'pedalboard/components/base_component'
 
-class Pedalboard; module Components
+module Pedalboard; module Components
   class Pot < BaseComponent
     TOLERANCE = 2
 

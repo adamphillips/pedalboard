@@ -1,6 +1,6 @@
 require_relative 'base_component'
 
-class Pedalboard; module Components
+module Pedalboard; module Components
   class Led < BaseComponent
     def light_if condition
       condition ? on : off

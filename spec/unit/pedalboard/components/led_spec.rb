@@ -2,7 +2,7 @@ require 'spec_helper'
 
 require 'pedalboard/components/led'
 
-class Pedalboard; module Components
+module Pedalboard; module Components
   describe Led do
     subject { Led.new }
 

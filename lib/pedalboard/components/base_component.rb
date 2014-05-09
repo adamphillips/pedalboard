@@ -2,7 +2,7 @@ require 'dino/components/base_component'
 
 require 'pedalboard/commands'
 
-class Pedalboard; module Components
+module Pedalboard; module Components
   class BaseComponent
     attr_reader :pin, :pedalboard
 

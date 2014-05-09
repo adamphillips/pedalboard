@@ -1,4 +1,4 @@
-class Pedalboard
+module Pedalboard
   class Commands
     NOTES = [
       'c1', 'd1', 'e1',

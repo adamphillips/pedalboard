@@ -3,7 +3,7 @@ require 'spec_helper'
 require 'pedalboard/device'
 require 'pedalboard/components/pedal'
 
-class Pedalboard
+module Pedalboard
   describe Device do
     describe '#add_component' do
       let(:connection) { double }
@@ -28,7 +28,7 @@ class Pedalboard
         args = {option1: 'someopt'}
         pedal = double
 
-        expect(Pedalboard::Components::Pedal)
+        expect(Components::Pedal)
           .to receive(:new)
             .with({
                 option1: 'someopt',

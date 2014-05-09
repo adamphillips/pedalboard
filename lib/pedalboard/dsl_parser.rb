@@ -1,4 +1,4 @@
-class Pedalboard
+module Pedalboard
  class DSLParser
     attr_reader :pedalboard
 
