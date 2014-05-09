@@ -1,3 +1,6 @@
 language: ruby
 script: rspec
 install: bundle install
+addons:
+  code_climate:
+    repo_token: a723909ed3e0091f9e9e3b4bb2f92c803d2a59deb7dd32352ff42d2736520185
