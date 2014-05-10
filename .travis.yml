@@ -1,5 +1,8 @@
 language: ruby
 script: rspec
+before_install:
+ - sudo apt-get update -qq
+ - sudo apt-get install libasound-dev
 install: bundle install
 addons:
   code_climate:
