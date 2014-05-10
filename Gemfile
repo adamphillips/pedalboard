@@ -5,6 +5,8 @@ gem 'dino'
 gem 'micromidi'
 gem 'unimidi'
 
+gem 'mixlib-cli'
+
 group :test do
   gem 'rspec'
   gem 'pry'

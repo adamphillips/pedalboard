@@ -1,8 +1,6 @@
 require 'dino/components/base_component'
 require 'dino/components/button'
 
-require 'pedalboard/commands'
-
 require_relative 'base_component'
 
 module Pedalboard; module Components

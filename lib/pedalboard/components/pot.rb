@@ -1,7 +1,7 @@
 require 'dino/components/base_component'
 require 'dino/components/sensor'
 
-require 'pedalboard/components/base_component'
+require_relative 'base_component'
 
 module Pedalboard; module Components
   class Pot < BaseComponent

@@ -1,9 +1,10 @@
-require 'pedalboard/dsl_parser'
-require 'pedalboard/device'
+require_relative 'pedalboard/cli'
+require_relative 'pedalboard/dsl_parser'
+require_relative 'pedalboard/device'
 
-require 'pedalboard/components/led'
-require 'pedalboard/components/pedal'
-require 'pedalboard/components/pot'
+require_relative 'pedalboard/components/led'
+require_relative 'pedalboard/components/pedal'
+require_relative 'pedalboard/components/pot'
 
 module Pedalboard
   def self.create opts={}, &block

@@ -1,3 +1,6 @@
+require 'dino'
+require 'micromidi'
+
 module Pedalboard
   class Device
 

@@ -1,6 +1,4 @@
-require 'dino/components/base_component'
-
-require 'pedalboard/commands'
+require_relative '../commands'
 
 module Pedalboard; module Components
   class BaseComponent

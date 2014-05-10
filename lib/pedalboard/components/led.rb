@@ -1,3 +1,6 @@
+require 'dino/components/base_component'
+require 'dino/components/led'
+
 require_relative 'base_component'
 
 module Pedalboard; module Components

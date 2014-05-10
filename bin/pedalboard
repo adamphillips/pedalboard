@@ -1,3 +1,6 @@
 #!/usr/bin/env ruby
 
-require_relative '../start'
+require_relative '../lib/pedalboard'
+
+Pedalboard::CLI.new.run(ARGV)
+sleep
